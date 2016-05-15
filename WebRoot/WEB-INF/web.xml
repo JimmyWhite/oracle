@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.0"
+    xmlns="http://java.sun.com/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>ProductServlet</servlet-name>
+    <servlet-class>oracle.ProductServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>CartServlet</servlet-name>
+    <servlet-class>oracle.CartServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>OrderServlet</servlet-name>
+    <servlet-class>oracle.OrderServlet</servlet-class>
+  </servlet>
+
+
+  <servlet-mapping>
+    <servlet-name>ProductServlet</servlet-name>
+    <url-pattern>/servlet/ProductServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>CartServlet</servlet-name>
+    <url-pattern>/servlet/CartServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>OrderServlet</servlet-name>
+    <url-pattern>/servlet/OrderServlet</url-pattern>
+  </servlet-mapping>
+
+<security-constraint>
+    <web-resource-collection>
+      <web-resource-name>HTML Manager interface (for humans)</web-resource-name>
+      <url-pattern>/admin.jsp</url-pattern>
+    </web-resource-collection>
+    <auth-constraint>
+       <role-name>manager-gui</role-name>
+    </auth-constraint>
+  </security-constraint>
+  
+  <login-config>
+    <auth-method>BASIC</auth-method>
+    <realm-name>Tomcat Manager Application</realm-name>
+  </login-config>
+
+  <!-- Security roles referenced by this web application -->
+  <security-role>
+    <description>
+      The role that is required to access the HTML Manager pages
+    </description>
+    <role-name>manager-gui</role-name>
+  </security-role>
+  <security-role>
+    <description>
+      The role that is required to access the text Manager pages
+    </description>
+    <role-name>manager-script</role-name>
+  </security-role>
+  <security-role>
+    <description>
+      The role that is required to access the HTML JMX Proxy
+    </description>
+    <role-name>manager-jmx</role-name>
+  </security-role>
+  <security-role>
+    <description>
+      The role that is required to access to the Manager Status pages
+    </description>
+    <role-name>manager-status</role-name>
+  </security-role>
+</web-app>
